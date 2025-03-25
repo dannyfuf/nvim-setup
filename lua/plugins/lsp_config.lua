@@ -49,16 +49,15 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		-- lspconfig.ruby_lsp.setup({
-		--   capabilities = capabilities,
-		--   on_attach = on_attach,
+		-- lspconfig.ruby_ls.setup({
+		-- 	capabilities = capabilities,
+		-- 	on_attach = on_attach,
 		-- })
 
 		lspconfig.rubocop.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
-
 		lspconfig.sorbet.setup({
 			root_dir = lspconfig.util.root_pattern(".git"),
 			capabilities = capabilities,
@@ -67,8 +66,24 @@ return {
 		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			root_dir = lspconfig.util.root_pattern("package.json"),
+			single_file_support = false,
 		})
 		lspconfig.eslint.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+		lspconfig.gopls.setup({
+			cmd = { "gopls" },
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+		lspconfig.denols.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			root_dir = lspconfig.util.root_pattern("deno.json"),
+		})
+		lspconfig.astro.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})

@@ -25,9 +25,11 @@ return {
 					"lua_ls",
 					"rubocop",
 					"sorbet",
-					"ruby-lsp",
+					"ruby_lsp",
 					"ts_ls",
 					"eslint",
+					"gopls",
+					"denols",
 				},
 			})
 
