@@ -15,8 +15,52 @@ vim.keymap.set("n", "<S-h>", ":bprevious<CR>")
 vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
 
 -- Move between blank lines (similar to { and })
-vim.keymap.set("n", "fj", "}", { noremap = true, silent = true, desc = "Move to next blank line" })
-vim.keymap.set("n", "fk", "{", { noremap = true, silent = true, desc = "Move to previous blank line" })
+vim.api.nvim_create_augroup("FModeGroup", { clear = true })
+vim.api.nvim_create_autocmd("ModeChanged", {
+	group = "FModeGroup",
+	pattern = "*:n",
+	callback = function()
+		vim.b.f_mode_active = false
+	end,
+})
+
+vim.keymap.set("n", "f", function()
+	vim.b.f_mode_active = true
+	-- Wait for next key
+	local ok, char = pcall(function()
+		return vim.fn.getcharstr()
+	end)
+
+	if ok then
+		if char == "j" then
+			vim.cmd("normal! }")
+		elseif char == "k" then
+			vim.cmd("normal! {")
+		else
+			-- Pass through the f command with the character
+			vim.cmd("normal! f" .. char)
+			vim.b.f_mode_active = false
+		end
+	else
+		vim.b.f_mode_active = false
+	end
+end, { noremap = true, silent = true, desc = "f-mode (fj/fk for paragraph navigation)" })
+
+vim.keymap.set("n", "j", function()
+	if vim.b.f_mode_active then
+		vim.cmd("normal! }")
+	else
+		vim.cmd("normal! j")
+	end
+end, { noremap = true, silent = true })
+
+vim.keymap.set("n", "k", function()
+	if vim.b.f_mode_active then
+		vim.cmd("normal! {")
+	else
+		vim.cmd("normal! k")
+	end
+end, { noremap = true, silent = true })
 
 -- neotest
 local opts = { noremap = true, silent = true }
