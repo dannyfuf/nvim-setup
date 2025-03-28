@@ -14,6 +14,10 @@ vim.keymap.set("n", "<S-h>", ":bprevious<CR>")
 
 vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
 
+-- Move between blank lines (similar to { and })
+vim.keymap.set("n", "fj", "}", { noremap = true, silent = true, desc = "Move to next blank line" })
+vim.keymap.set("n", "fk", "{", { noremap = true, silent = true, desc = "Move to previous blank line" })
+
 -- neotest
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<leader>l", ':lua require("neotest").run.run()<CR>', opts)
