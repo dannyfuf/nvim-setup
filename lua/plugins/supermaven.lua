@@ -6,7 +6,7 @@ return {
 				keymaps = {
 					accept_suggestion = "<Tab>",
 					clear_suggestion = "<S-Tab>",
-					accept_word = "<S-l>",
+					accept_word = "<C-l>", -- Changed from <S-l> to <C-l> (Ctrl+L)
 				},
 			})
 		end,
