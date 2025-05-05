@@ -62,15 +62,6 @@ vim.keymap.set("n", "k", function()
 	end
 end, { noremap = true, silent = true })
 
--- neotest
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<leader>l", ':lua require("neotest").run.run()<CR>', opts)
-vim.keymap.set("n", "<leader>ls", ':lua require("neotest").run.stop()<CR>', opts)
-vim.keymap.set("n", "<leader>lk", ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>', opts)
-vim.keymap.set("n", "<leader>lo", ':lua require("neotest").output.open()<CR>', opts)
-vim.keymap.set("n", "<leader>loo", ':lua require("neotest").output.open({ enter = true })<CR>', opts)
-vim.keymap.set("n", "<leader>ls", ':lua require("neotest").summary.toggle()<CR>', opts)
-
 -- remove highlighted words
 vim.keymap.set("n", "<leader>//", ":nohls<CR>")
 
