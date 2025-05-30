@@ -30,7 +30,9 @@ return {
 					"eslint",
 					"gopls",
 					"denols",
+					"astro",
 				},
+				automatic_installation = true,
 			})
 
 			mason_tool_installer.setup({
