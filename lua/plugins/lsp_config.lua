@@ -39,15 +39,18 @@ return {
 
 			opts.desc = "[G]oto [D]eclaration"
 			keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+
+			opts.desc = "[R]estart [S]erver"
+			keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
 		end
 
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
+		-- local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+		-- for type, icon in pairs(signs) do
+		-- 	local hl = "DiagnosticSign" .. type
+		-- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+		-- end
 
 		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
@@ -61,15 +64,16 @@ return {
 			},
 		})
 
-		-- lspconfig.ruby_ls.setup({
+		lspconfig.ruby_lsp.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		-- lspconfig.rubocop.setup({
 		-- 	capabilities = capabilities,
 		-- 	on_attach = on_attach,
 		-- })
 
-		lspconfig.rubocop.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
 		lspconfig.sorbet.setup({
 			root_dir = lspconfig.util.root_pattern(".git"),
 			capabilities = capabilities,

@@ -23,7 +23,6 @@ return {
 			mason_lspconfig.setup({
 				ensure_installed = {
 					"lua_ls",
-					"rubocop",
 					"sorbet",
 					"ruby_lsp",
 					"ts_ls",
@@ -38,7 +37,6 @@ return {
 			mason_tool_installer.setup({
 				ensure_installed = {
 					"stylua",
-					"rubocop",
 					"eslint_d",
 				},
 			})

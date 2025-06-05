@@ -7,7 +7,7 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
-        ruby = { 'ruby', 'rubocop' },
+        ruby = { 'ruby' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
@@ -29,6 +29,15 @@ return {
       --   terraform = { "tflint" },
       --   text = { "vale" }
       -- }
+
+      -- Configure diagnostics to show virtual text
+      vim.diagnostic.config({
+        virtual_text = true,
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+        severity_sort = true,
+      })
 
       -- Create autocommand which carries out the actual linting
       -- on the specified events.
