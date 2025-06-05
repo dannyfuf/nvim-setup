@@ -24,7 +24,7 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"sorbet",
-					"ruby_lsp",
+					-- "ruby_lsp",
 					"ts_ls",
 					"eslint",
 					"gopls",
@@ -32,12 +32,14 @@ return {
 					"astro",
 				},
 				automatic_installation = true,
+				automatic_enable = false,
 			})
 
 			mason_tool_installer.setup({
 				ensure_installed = {
 					"stylua",
 					"eslint_d",
+					"rubocop",
 				},
 			})
 		end,
