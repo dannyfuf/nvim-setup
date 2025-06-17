@@ -1,15 +1,13 @@
---Remap space as leader key
 vim.keymap.set("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-function insertFullPath()
-	vim.fn.setreg("+", vim.fn.expand("%:p")) -- write to clippoard
+local function insertFullPath()
+	vim.fn.setreg("+", vim.fn.expand("%:p"))
 end
 vim.keymap.set("n", "<leader>yp", insertFullPath, { noremap = true, silent = true })
 
 -- supermanven
--- vim.keymap.set("n", "<S-l>", ":bnext<CR>")
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>")
 
 vim.keymap.set("n", "<leader>pv", ":Ex<CR>")

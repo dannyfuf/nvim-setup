@@ -75,7 +75,7 @@ return {
 		-- })
 
 		lspconfig.sorbet.setup({
-			root_dir = lspconfig.util.root_pattern(".git"),
+			root_dir = lspconfig.util.root_pattern(".git", "Gemfile.lock"),
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
