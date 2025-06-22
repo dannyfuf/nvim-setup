@@ -72,14 +72,9 @@ return {
 			-- Configure Sorbet LSP for Ruby
 			lspconfig["sorbet"].setup({
 				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					-- Disable Sorbet formatting in favor of RuboCop
-					client.server_capabilities.documentFormattingProvider = false
-					client.server_capabilities.documentRangeFormattingProvider = false
-					on_attach(client, bufnr)
-				end,
+				on_attach = on_attach,
 				cmd = { "srb", "tc", "--lsp" },
-				root_dir = lspconfig.util.root_pattern("sorbet/config", "Gemfile", ".git"),
+				root_dir = lspconfig.util.root_pattern(".git", "Gemfile.lock"),
 				settings = {
 					sorbet = {
 						completion = true,
