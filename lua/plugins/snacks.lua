@@ -2,7 +2,9 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
-      notifier = {}
+      notifier = {},
+      scroll = {},
+      statuscolumn = {}
     }
   }
 }
