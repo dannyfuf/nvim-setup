@@ -1,6 +1,9 @@
 vim.keymap.set("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+vim.schedule(function()
+  vim.opt.clipboard = "unnamedplus"
+end)
 
 local function insertFullPath()
   vim.fn.setreg("+", vim.fn.expand("%:p"))
@@ -65,4 +68,3 @@ vim.keymap.set("n", "<leader>//", ":nohls<CR>")
 
 -- oil show parent
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-
