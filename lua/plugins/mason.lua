@@ -20,9 +20,11 @@ return {
 
       mason_lspconfig.setup({
         ensure_installed = {
+          "biome",
           "lua_ls",
           "denols",
           "sorbet",
+          "tsserver",
         },
       })
     end,
